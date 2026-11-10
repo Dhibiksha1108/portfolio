@@ -3153,6 +3153,52 @@ section.show{
     background: rgba(212, 163, 115, 0.14);
 }
 
+/* Experience Certificate Link */
+.exp-actions {
+    margin-top: 20px;
+}
+
+.exp-cert-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border-radius: 24px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--primary-color);
+    background: rgba(212, 163, 115, 0.08);
+    border: 1px solid rgba(212, 163, 115, 0.3);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.exp-cert-btn:hover {
+    background: var(--primary-color);
+    color: #111;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(212, 163, 115, 0.25);
+}
+
+.exp-cert-btn svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    flex-shrink: 0;
+}
+
+.exp-cert-btn .external-icon {
+    width: 12px;
+    height: 12px;
+    opacity: 0.85;
+    transition: transform 0.3s ease;
+}
+
+.exp-cert-btn:hover .external-icon {
+    transform: translate(2px, -2px);
+}
+
 /* Key Learnings Column */
 .exp-learnings-col {
     background: rgba(26, 26, 26, 0.55);
@@ -3354,6 +3400,270 @@ section.show{
     font-size: 11px;
     color: var(--secondary-text);
     opacity: 0.85;
+}
+
+/* Certificate Image Preview */
+.cert-preview-frame {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #0d0d0d;
+    border: 1px solid rgba(212, 163, 115, 0.2);
+}
+
+.cert-preview-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-decoration: none;
+    overflow: hidden;
+}
+
+.cert-preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.4s ease;
+    display: block;
+}
+
+.cert-preview-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.cert-preview-hint {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 16px;
+    background: rgba(18, 18, 18, 0.9);
+    border-radius: 20px;
+    border: 1px solid rgba(212, 163, 115, 0.5);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.cert-preview-hint svg {
+    width: 15px;
+    height: 15px;
+    stroke: var(--primary-color);
+}
+
+.cert-preview-frame:hover .cert-preview-img {
+    transform: scale(1.05);
+}
+
+.cert-preview-frame:hover .cert-preview-overlay {
+    opacity: 1;
+}
+
+.cert-pdf-badge-floating {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(18, 18, 18, 0.85);
+    color: var(--primary-color);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    padding: 3px 9px;
+    border-radius: 6px;
+    border: 1px solid rgba(212, 163, 115, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Certificate PDF Preview Card */
+.cert-pdf-preview-box {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(145deg, rgba(28, 24, 20, 0.75), rgba(15, 15, 15, 0.95));
+    border: 1px solid rgba(212, 163, 115, 0.2);
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.cert-pdf-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 16px 18px;
+    text-decoration: none;
+    color: inherit;
+    box-sizing: border-box;
+}
+
+.cert-pdf-preview-box:hover {
+    border-color: rgba(212, 163, 115, 0.45);
+    transform: translateY(-2px);
+}
+
+.cert-pdf-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cert-pdf-badge-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    color: var(--primary-color);
+    background: rgba(212, 163, 115, 0.12);
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(212, 163, 115, 0.25);
+}
+
+.cert-pdf-badge-tag svg {
+    width: 13px;
+    height: 13px;
+    stroke: var(--primary-color);
+}
+
+.cert-pdf-badge-secure {
+    font-size: 11px;
+    color: var(--secondary-text);
+    font-weight: 500;
+}
+
+.cert-pdf-sheet-mockup {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    position: relative;
+    padding: 6px 0;
+}
+
+.cert-pdf-sheet-mockup .mockup-line {
+    height: 3px;
+    border-radius: 2px;
+    background: rgba(212, 163, 115, 0.18);
+}
+
+.cert-pdf-sheet-mockup .mockup-line.title-line {
+    width: 55%;
+    background: rgba(212, 163, 115, 0.35);
+}
+
+.cert-pdf-sheet-mockup .mockup-line.sub-line {
+    width: 75%;
+}
+
+.cert-pdf-sheet-mockup .mockup-line.body-line {
+    width: 40%;
+}
+
+.mockup-seal {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.25;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mockup-seal svg {
+    width: 38px;
+    height: 38px;
+    stroke: var(--primary-color);
+}
+
+.cert-pdf-preview-box:hover .mockup-seal {
+    opacity: 0.55;
+    transform: translateY(-50%) rotate(10deg);
+}
+
+.cert-pdf-caption {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.cert-pdf-filename {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cert-pdf-hint {
+    font-size: 11px;
+    color: var(--primary-color);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Certificate View Action Button */
+.cert-action-row {
+    margin-top: 14px;
+}
+
+.cert-view-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 11px 18px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #111;
+    background: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.cert-view-btn:hover {
+    background: #e2b488;
+    border-color: #e2b488;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(212, 163, 115, 0.3);
+}
+
+.cert-view-btn svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    flex-shrink: 0;
+}
+
+.cert-view-btn .external-icon {
+    width: 13px;
+    height: 13px;
+    transition: transform 0.3s ease;
+}
+
+.cert-view-btn:hover .external-icon {
+    transform: translate(2px, -2px);
 }
 
 /* =========================================
