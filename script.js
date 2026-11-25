@@ -246,8 +246,13 @@ const projectDetailsData = {
             "Microservice architecture linking a React 19 frontend, Express.js REST API, and Python FastAPI NLP service."
         ],
         tech: ["React 19", "TypeScript", "Node.js", "Express.js", "Python FastAPI", "MongoDB", "Tailwind CSS"],
+        images: [
+            { src: "project-images/careerlens/CareerLens2.png", alt: "CareerLens AI Analysis Dashboard & Skill Gap Evaluation" },
+            { src: "project-images/careerlens/CareerLens3.png", alt: "CareerLens AI Personalized Career Roadmap & Insights" }
+        ],
         actions: [
-            { label: "GitHub Repo ↗", url: "https://github.com/Dhibiksha1108/CareerLens-AI.git", primary: true }
+            { label: "Live Demo ↗", url: "https://careerlens-ai-sxvt.onrender.com/", primary: true },
+            { label: "GitHub Repo ↗", url: "https://github.com/Dhibiksha1108/CareerLens-AI", primary: false }
         ]
     },
     scholarship: {
@@ -359,6 +364,66 @@ const projectDetailsData = {
             { label: "Live Demo ↗", url: "https://quote-generator-nu-mocha.vercel.app/", primary: true },
             { label: "GitHub Repo ↗", url: "https://github.com/Dhibiksha1108/quote-generator.git", primary: false }
         ]
+    },
+    "sales-analysis": {
+        category: "Data Analytics • Business Intelligence",
+        title: "Sales & Revenue Analysis Dashboard",
+        desc: "An end-to-end Power BI business intelligence dashboard delivering multi-dimensional sales performance tracking, revenue trend diagnostics, and profit margin analysis across diverse product categories and regional markets.",
+        features: [
+            "Interactive KPI metrics tracking Total Revenue, Gross Profit, Units Sold, and YoY Sales Growth.",
+            "Dynamic filtering and cross-highlighting by sales region, product hierarchy, and seasonal quarters.",
+            "Advanced DAX measures for profit margin variances, running totals, and target attainment tracking.",
+            "Executive-ready visual layouts with customized matrix grids and category drill-through pages."
+        ],
+        tech: ["Power BI", "DAX", "Data Modeling", "Business Intelligence", "Power Query"],
+        actions: [
+            { label: "GitHub Repo ↗", url: "https://github.com/Dhibiksha1108/Sales_revenue_analysis_dashboard", primary: true }
+        ]
+    },
+    "customer-segmentation": {
+        category: "Data Analytics • Customer Intelligence",
+        title: "Customer Segmentation Dashboard",
+        desc: "A strategic customer analytics Power BI dashboard categorizing customer cohorts by purchasing behaviors, engagement frequency, and monetary contribution to identify high-value segments and churn risks.",
+        features: [
+            "RFM (Recency, Frequency, Monetary) behavioral segmentation models evaluating customer lifetime value.",
+            "Cohort retention analysis and demographic breakdown visualizers across customer tiers.",
+            "Interactive slicers enabling targeted customer group identification for marketing campaigns.",
+            "Actionable insights into average order value (AOV) and customer acquisition trends."
+        ],
+        tech: ["Power BI", "DAX", "Customer Analytics", "RFM Segmentation", "Data Visualization"],
+        actions: [
+            { label: "GitHub Repo ↗", url: "https://github.com/Dhibiksha1108/Customer-segmentation-dashboard", primary: true }
+        ]
+    },
+    "predictive-analytics": {
+        category: "Data Analytics • Predictive Modeling",
+        title: "Predictive Analytics Using Historical Data",
+        desc: "A data-driven predictive analytics dashboard analyzing historical business datasets to forecast demand cycles, estimate future revenue trajectories, and uncover underlying patterns through statistical modeling.",
+        features: [
+            "Time-series trend forecasting and historical baseline benchmarking for future quarter projections.",
+            "Variance analysis and statistical moving averages identifying seasonal demand patterns.",
+            "Scenario simulation parameters allowing stakeholders to assess best-case and conservative growth models.",
+            "Custom DAX forecast calculations and automated visual trend lines with confidence intervals."
+        ],
+        tech: ["Power BI", "DAX", "Predictive Modeling", "Trend Forecasting", "Time Series Analysis"],
+        actions: [
+            { label: "GitHub Repo ↗", url: "https://github.com/Dhibiksha1108/Predictive-analytics-using-historical-data", primary: true }
+        ]
+    },
+    "data-cleaning": {
+        category: "Data Analytics • Data Engineering",
+        title: "Data Cleaning & Reporting Automation",
+        desc: "An automated data cleansing, transformation, and reporting pipeline built with Power Query and Power BI to standardize raw, unorganized datasets into reliable, analysis-ready reporting models.",
+        features: [
+            "Automated ETL pipeline handling missing value imputations, duplicate removals, and type validations.",
+            "Normalized star-schema data modeling linking dimension tables to transactional fact records.",
+            "Power Query M formulas automating periodic data refresh cycles without manual data intervention.",
+            "Data quality auditing dashboards highlighting anomalies, schema variances, and validation KPIs."
+        ],
+        tech: ["Power BI", "Power Query (M)", "ETL Automation", "Data Cleansing", "Data Modeling"],
+        actions: [
+            { label: "GitHub Repo ↗", url: "https://github.com/Dhibiksha1108/data-cleaning-reporting-automation", primary: true }
+        ]
     }
 };
 
@@ -366,6 +431,8 @@ const modal = document.getElementById("project-modal");
 const modalCategory = document.getElementById("modal-category");
 const modalTitle = document.getElementById("modal-title");
 const modalDesc = document.getElementById("modal-description");
+const modalScreenshotsSection = document.getElementById("modal-screenshots-section");
+const modalScreenshots = document.getElementById("modal-screenshots");
 const modalFeatures = document.getElementById("modal-features");
 const modalTech = document.getElementById("modal-tech");
 const modalActions = document.getElementById("modal-actions");
@@ -377,6 +444,34 @@ function openProjectModal(projectId) {
     modalCategory.textContent = data.category;
     modalTitle.textContent = data.title;
     modalDesc.textContent = data.desc;
+
+    if (modalScreenshotsSection && modalScreenshots) {
+        modalScreenshots.innerHTML = "";
+        if (data.images && data.images.length > 0) {
+            data.images.forEach((imgItem) => {
+                const src = typeof imgItem === "string" ? imgItem : imgItem.src;
+                const alt = typeof imgItem === "string" ? data.title : (imgItem.alt || data.title);
+
+                const link = document.createElement("a");
+                link.href = src;
+                link.target = "_blank";
+                link.rel = "noopener noreferrer";
+                link.className = "modal-screenshot-frame";
+                link.title = "View full image in new tab";
+
+                const img = document.createElement("img");
+                img.src = src;
+                img.alt = alt;
+                img.loading = "lazy";
+
+                link.appendChild(img);
+                modalScreenshots.appendChild(link);
+            });
+            modalScreenshotsSection.style.display = "block";
+        } else {
+            modalScreenshotsSection.style.display = "none";
+        }
+    }
 
     modalFeatures.innerHTML = "";
     data.features.forEach((feat) => {
